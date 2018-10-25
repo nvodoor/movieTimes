@@ -1,5 +1,7 @@
 ## MAC files ##
 .DS_Store
+package-lock.json
+public/bundle.js
 
 ## NPM ##
 npm
