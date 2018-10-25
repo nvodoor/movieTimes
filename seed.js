@@ -17,7 +17,11 @@ const createData = (movie, movId) => {
     const lat = faker.address.latitude();
     const long = faker.address.longitude();
 
+<<<<<<< HEAD
     const query = `\nINSERT INTO ${table} (movie, theater, Address, Date, Latitude, Longitude, movie_id) VALUES('${movie}', '${theater}', '${address}', '${date}', ${lat}, ${long}, ${movId});\n`
+=======
+    const query = `\nINSERT INTO ${table} (movie, theater, Address, Date, Latitude, Longitude, movie_id) VALUES('${movie}', '${theater}', '${address}', '${date}', ${lat}, ${long}, ${movId})\n`
+>>>>>>> 9b79b395200a243919cc8141bae81543129292b6
 
     fs.appendFile('schema.sql', query, (err) => {
         if (err) {
@@ -28,6 +32,10 @@ const createData = (movie, movId) => {
     })
 }
 
+<<<<<<< HEAD
 for (var i = 0; i < 100; i++) {
     createData(movie_one, movie_id);
 }
+=======
+createData(movie_one, movie_id);
+>>>>>>> 9b79b395200a243919cc8141bae81543129292b6

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 CREATE DATABASE IF NOT EXISTS MovieTimes;
+=======
+CREATE DATABASE IF NOT EXISTS MovieTimes ;
+>>>>>>> 9b79b395200a243919cc8141bae81543129292b6
 
 use MovieTimes;
 
@@ -14,6 +18,7 @@ CREATE TABLE IF NOT EXISTS MovieTimes (
 );
 
 
+<<<<<<< HEAD
 
 INSERT INTO MovieTimes (movie, theater, Address, Date, Latitude, Longitude, movie_id) VALUES('indigo metrics Skyway', 'Chief', '45113 Dibbert Knolls, Port Davion, Arkansas, 72932', '2018-10-24', 59.3582, 1.3511, 1);
 
@@ -214,3 +219,5 @@ INSERT INTO MovieTimes (movie, theater, Address, Date, Latitude, Longitude, movi
 INSERT INTO MovieTimes (movie, theater, Address, Date, Latitude, Longitude, movie_id) VALUES('indigo metrics Skyway', 'bypass', '5162 Kuvalis Motorway, Schmidtfurt, Wisconsin, 81734-5445', '2018-10-24', 21.4127, -173.1677, 1);
 
 INSERT INTO MovieTimes (movie, theater, Address, Date, Latitude, Longitude, movie_id) VALUES('indigo metrics Skyway', 'Ball', '1430 Ettie Underpass, Declantown, Illinois, 24259', '2018-10-24', 17.3627, 52.3413, 1);
+=======
+>>>>>>> 9b79b395200a243919cc8141bae81543129292b6
