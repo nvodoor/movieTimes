@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 CREATE DATABASE IF NOT EXISTS MovieTimes;
-=======
-CREATE DATABASE IF NOT EXISTS MovieTimes ;
->>>>>>> 9b79b395200a243919cc8141bae81543129292b6
 
 use MovieTimes;
 
