@@ -1,10 +1,7 @@
 ## MAC files ##
 .DS_Store
-<<<<<<< HEAD
 package-lock.json
 public/bundle.js
-=======
->>>>>>> 9b79b395200a243919cc8141bae81543129292b6
 
 ## NPM ##
 npm
