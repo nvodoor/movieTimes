@@ -32,7 +32,7 @@ test('should return an array with no results when movies endpoint is hit with mo
         })
 })
 
-test('should return an array with results when movies endpoint is hit with movieid', (done) => {
+test('should return an array with results when moviesid endpoint is hit with movieid', (done) => {
     return request(server)
     .get('/api/moviesbyid/1/SMTP/2018-10-24/50.000,50.000')
     .then((response) => {
@@ -41,7 +41,7 @@ test('should return an array with results when movies endpoint is hit with movie
     })
 })
 
-test('should return an array with no results when movies endpoint is hit with movie not in database', (done) => {
+test('should return an array with no results when moviesid endpoint is hit with movie not in database', (done) => {
     return request(server)
         .get('/api/moviesbyid/SMTPO/2018-10-24/50.000,50.000')
         .then((response) => {
