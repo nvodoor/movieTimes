@@ -13,3 +13,39 @@ test('should serve data when the index endpoint is hit', (done) => {
         server.stop(done)
     })
 });
+
+test('should return an array with results when movies endpoint is hit with movie', (done) => {
+    return request(server)
+        .get('/api/movies/SMTP/2018-10-24/50.000,50.000')
+        .then((response) => {
+            expect(response.body.length).not.toBe(0);
+            server.stop(done)
+        })
+})
+
+test('should return an array with no results when movies endpoint is hit with movie not in database', (done) => {
+    return request(server)
+        .get('/api/movies/SMTPO/2018-10-24/50.000,50.000')
+        .then((response) => {
+            expect(response.body.length).toBe(0);
+            server.stop(done)
+        })
+})
+
+test('should return an array with results when movies endpoint is hit with movieid', (done) => {
+    return request(server)
+    .get('/api/moviesbyid/1/SMTP/2018-10-24/50.000,50.000')
+    .then((response) => {
+        expect(response.body.length).not.toBe(0);
+        server.stop(done)
+    })
+})
+
+test('should return an array with no results when movies endpoint is hit with movie not in database', (done) => {
+    return request(server)
+        .get('/api/moviesbyid/SMTPO/2018-10-24/50.000,50.000')
+        .then((response) => {
+            expect(response.body.length).toBe(0);
+            server.stop(done)
+        })
+})
