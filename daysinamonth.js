@@ -22,7 +22,6 @@ export default class getDays {
                     month = ['0'];
                     month.push(i.toString())
                     month = month.join("");
-                    console.log(month)
                 } else {
                     month = ''+i+'';
                 }
