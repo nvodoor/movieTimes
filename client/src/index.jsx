@@ -1,18 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.jsx';
 
-class App extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+const Index = () => (
+  <div>
+    <App />
+  </div>
+);
 
-    render() {
-        return (
-            <div>
-                <h1 className="box">These are the specified times for this movie.</h1>
-            </div>
-        )
-    }
-}
-
-ReactDOM.render(<App />, document.getElementById('movie-times'))
+ReactDOM.render(<Index />, document.getElementById('movie-times'));
