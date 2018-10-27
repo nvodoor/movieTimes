@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import { mount } from 'enzyme';
 import React from 'react';
 import fetch from 'isomorphic-fetch';
@@ -25,5 +27,7 @@ test('Calendar Component should contain state for fetched data', () => {
   const wrapper = mount(<Calendar />);
   const days = new getDays();
   days.fillDays(2018);
-  wrapper.setState({date: '10-24-2018', dates: days.yearDates, dateIndex: days.yearIndexes});
+  const instance = wrapper.instance();
+  instance.filterDates();
+  expect(wrapper.state('datesFiltered')).toBe('yes');
 });

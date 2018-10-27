@@ -11,6 +11,7 @@ class Calendar extends React.Component {
       dates: [],
       dateIndex: {},
       filterDates: [],
+      datesFiltered: 'no'
     };
   }
 
@@ -32,6 +33,7 @@ class Calendar extends React.Component {
       });
   }
 
+
   filterDates() {
     const filterDate = [];
     const index = this.state.dateIndex[this.state.date];
@@ -40,6 +42,7 @@ class Calendar extends React.Component {
     }
     this.setState({
       filterDates: filterDate,
+      datesFiltered: 'yes'
     });
   }
 
