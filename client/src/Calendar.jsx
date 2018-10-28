@@ -11,7 +11,6 @@ class Calendar extends React.Component {
       dates: [],
       dateIndex: {},
       filterDates: [],
-      datesFiltered: 'no'
     };
   }
 
@@ -42,12 +41,11 @@ class Calendar extends React.Component {
     }
     this.setState({
       filterDates: filterDate,
-      datesFiltered: 'yes'
     });
   }
 
   render() {
-    const scroll = this.state.filterDates.map(date => <p>{date}</p>);
+    const scroll = this.state.filterDates.map(date => <p key={date}>{date}</p>);
 
     return (
       <div>

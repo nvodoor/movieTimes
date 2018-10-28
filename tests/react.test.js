@@ -28,6 +28,7 @@ test('Calendar Component should contain state for fetched data', () => {
   const days = new getDays();
   days.fillDays(2018);
   const instance = wrapper.instance();
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
   instance.filterDates();
-  expect(wrapper.state('datesFiltered')).toBe('yes');
+  expect(wrapper.state('filterDates')).toHaveLength(7);
 });
