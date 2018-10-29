@@ -1,11 +1,12 @@
 /* eslint-env jest */
 
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import fetch from 'isomorphic-fetch';
 import App from '../client/src/App.jsx';
 import Calendar from '../client/src/Calendar.jsx';
 import getDays from '../daysinamonth.js';
+import Dates from '../client/src/Dates.jsx';
 
 test('getDays function should have 365 dates', () => {
   const days = new getDays();
@@ -23,7 +24,7 @@ test('Calendar Component should be within App Component', () => {
   expect(wrapper.find(Calendar).length).toBe(1);
 });
 
-test('Calendar Component should contain state for fetched data', () => {
+test('Calendar Component should have working filterDates method', () => {
   const wrapper = mount(<Calendar />);
   const days = new getDays();
   days.fillDays(2018);
@@ -31,4 +32,20 @@ test('Calendar Component should contain state for fetched data', () => {
   wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
   instance.filterDates();
   expect(wrapper.state('filterDates')).toHaveLength(7);
+});
+
+test('Dates Component should have 7 dates within Calendar Component', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  const instance = wrapper.instance();
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
+  instance.filterDates();
+  wrapper.update();
+  expect(wrapper.find(Dates).length).toBe(7);
+});
+
+test('Dates Component should contain three li items', () => {
+  const wrapper = shallow(<Dates />);
+  expect(wrapper.find('li').length).toBe(3);
 });

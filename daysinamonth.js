@@ -6,6 +6,7 @@ export default class getDays {
   constructor() {
     this.yearDates = [];
     this.yearIndexes = {};
+    this.yearWeekday = [];
   }
 
   getDaysInMonth(month, year) {
@@ -37,6 +38,34 @@ export default class getDays {
         this.yearDates.push(dateString);
         this.yearIndexes[dateString] = index;
         index += 1;
+      }
+    }
+  }
+
+  fillWeekDays() {
+    let count = 0;
+    for (let i = 0; i < this.yearDates.length; i += 1) {
+      if (count === 0) {
+        this.yearWeekday.push('Monday');
+        count += 1;
+      } else if (count === 1) {
+        this.yearWeekday.push('Tuesday');
+        count += 1;
+      } else if (count === 2) {
+        this.yearWeekday.push('Wednesday');
+        count += 1;
+      } else if (count === 3) {
+        this.yearWeekday.push('Thursday');
+        count += 1;
+      } else if (count === 4) {
+        this.yearWeekday.push('Friday');
+        count += 1;
+      } else if (count === 5) {
+        this.yearWeekday.push('Saturday');
+        count += 1;
+      } else {
+        this.yearWeekday.push('Sunday');
+        count = 0;
       }
     }
   }
