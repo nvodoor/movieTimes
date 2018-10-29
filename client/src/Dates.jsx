@@ -2,10 +2,10 @@ import React from 'react';
 
 const Dates = ({ dayweek, month, day }) => (
   <div>
-    <ul>
-      <li>{dayweek}</li>
-      <li>{month}</li>
-      <li>{day}</li>
+    <ul className="list-box">
+      <li className="week-day">{dayweek}</li>
+      <li className="month-highlight">{month}</li>
+      <li className="day-highlight">{day}</li>
     </ul>
   </div>
 );
