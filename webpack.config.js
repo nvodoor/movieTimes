@@ -20,5 +20,4 @@ module.exports = {
         filename: 'bundle.js',
         path: __dirname + '/public/'
     }
-
 }

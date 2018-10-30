@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Dates = ({ dayweek, month, day }) => (
+const Dates = ({
+  dayweek, month, day, ident, clicker, specClass,
+}) => (
   <div>
-    <ul className="list-box">
-      <li className="week-day">{dayweek}</li>
-      <li className="month-highlight">{month}</li>
-      <li className="day-highlight">{day}</li>
+    <ul className={`list-box ${specClass}`} id={ident}>
+      <li className="week-day" onClick={clicker}>{dayweek}</li>
+      <li className="month-highlight" onClick={clicker}>{month}</li>
+      <li className="day-highlight" onClick={clicker}>{day}</li>
     </ul>
   </div>
 );
