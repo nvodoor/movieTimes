@@ -1,6 +1,7 @@
 import React from 'react';
 import Days from '../../daysinamonth.js';
 import Dates from './Dates.jsx';
+import Theater from './Theater.jsx';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -22,6 +23,15 @@ class Calendar extends React.Component {
     fetch('/api/moviesbyid/1/2018-10-24/45.621,65.4567')
       .then(res => res.json())
       .then((data) => {
+        for (let i = 0; i < data.length; i += 1) {
+          const keys = JSON.parse(data[i].times);
+          const arr = [];
+          Object.keys(keys).forEach((key) => {
+            arr.push(key);
+          });
+          data[i].times = arr;
+        }
+        console.log(data);
         this.setState({
           data,
         });
@@ -115,9 +125,18 @@ class Calendar extends React.Component {
       </div>
     );
 
+    let theatres;
+
+    if (this.state.data.length === 0) {
+      theatres = <div className="theatre-times"><p>There is no data here.</p></div>;
+    } else {
+      theatres = <div className="theatre-times">{this.state.data.map(data => <div className="theatre-field"><Theater theater={data.theater} address={data.Address} times={data.times} /></div>)}</div>;
+    }
+
     return (
       <div>
         {scroll}
+        {theatres}
       </div>
     );
   }

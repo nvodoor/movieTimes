@@ -37,8 +37,22 @@
   justify-content: center;
   width: 25px;
   border: 1px solid grey;
+  border-radius: 10px;
 }
 
 .selected {
   background-color: aliceblue;
+}
+
+.theatre-times {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.theatre-field {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
