@@ -20,7 +20,11 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/moviesbyid/1/2018-10-24/45.621,65.4567')
+    this.getData(this.state.selected);
+  }
+
+  getData(day) {
+    fetch(`/api/moviesbyid/1/${day}/45.621,65.4567`)
       .then(res => res.json())
       .then((data) => {
         for (let i = 0; i < data.length; i += 1) {
@@ -52,6 +56,7 @@ class Calendar extends React.Component {
     this.setState({
       selected: event.target.parentNode.id,
     });
+    this.getData(event.target.parentNode.id);
   }
 
   filterDates(day = this.state.date) {
