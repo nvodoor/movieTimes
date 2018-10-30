@@ -34,6 +34,26 @@ test('Calendar Component should have working filterDates method', () => {
   expect(wrapper.state('filterDates')).toHaveLength(7);
 });
 
+test('Calendar Component should have working backDate method', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  const instance = wrapper.instance();
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
+  instance.backDate();
+  expect(wrapper.state('date')).toBe('2018-10-23');
+})
+
+test('Calendar Component should have working forwardDate method', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  const instance = wrapper.instance();
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
+  instance.forwardDate();
+  expect(wrapper.state('date')).toBe('2018-10-25');
+})
+
 test('Dates Component should have 7 dates within Calendar Component', () => {
   const wrapper = mount(<Calendar />);
   const days = new getDays();

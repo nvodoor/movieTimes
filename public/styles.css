@@ -7,7 +7,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 198px;
   height: 100px;
   text-align: center;
   border: 1px solid grey;
@@ -29,4 +29,12 @@
 .day-highlight {
   font-family: 'Roboto Slab', sans-serif;
   font-size: 20px;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25px;
+  border: 1px solid grey;
 }

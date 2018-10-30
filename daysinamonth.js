@@ -15,9 +15,9 @@ export default class getDays {
 
   fillDays(year) {
     let index = 0;
-    for (let i = 1; i < 13; i++) {
+    for (let i = 1; i < 13; i += 1) {
       let date = this.getDaysInMonth(i, year);
-      for (let j = 1; j <= date; j+= 1) {
+      for (let j = 1; j <= date; j += 1) {
         let month;
         if (i < 10) {
           month = ['0'];

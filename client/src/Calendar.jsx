@@ -37,9 +37,9 @@ class Calendar extends React.Component {
   }
 
 
-  filterDates() {
+  filterDates(day = this.state.date) {
     const filterDate = [];
-    const index = this.state.dateIndex[this.state.date];
+    const index = this.state.dateIndex[day];
     const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     for (let i = index; i < index + 7; i += 1) {
       const obj = {};
@@ -54,12 +54,32 @@ class Calendar extends React.Component {
     });
   }
 
+  backDate() {
+    const index = this.state.dateIndex[this.state.date] - 1;
+    const day = this.state.dates[index];
+    this.setState({
+      date: day,
+    })
+    this.filterDates(day);
+  }
+
+  forwardDate() {
+    const index = this.state.dateIndex[this.state.date] + 1;
+    const day = this.state.dates[index];
+    this.setState({
+      date: day,
+    })
+    this.filterDates(day);
+  }
+
   render() {
     const scroll = (
       <div className="weekdates">
+        <div className="arrows" onClick={this.backDate.bind(this)}><i className="fas fa-arrow-left"></i></div>
         {this.state.filterDates.map(
           date => <Dates dayweek={date.weekday} day={date.day} month={date.month} />,
         )}
+        <div className="arrows" onClick={this.forwardDate.bind(this)}><i className="fas fa-arrow-right"></i></div>
       </div>
     );
 
