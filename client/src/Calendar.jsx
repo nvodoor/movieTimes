@@ -79,6 +79,7 @@ class Calendar extends React.Component {
   selectDate(event) {
     this.setState({
       selected: event.target.parentNode.id,
+      page: 1,
     });
     this.getData(event.target.parentNode.id);
   }
