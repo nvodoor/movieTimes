@@ -15,6 +15,8 @@ class Calendar extends React.Component {
       filterDates: [],
       weekdates: [],
       selected: '2018-10-24',
+      pages: [],
+      page: 1
     };
     this.selectDate = this.selectDate.bind(this);
   }
@@ -35,7 +37,6 @@ class Calendar extends React.Component {
           });
           data[i].times = arr;
         }
-        console.log(data);
         this.setState({
           data,
         });
@@ -49,7 +50,30 @@ class Calendar extends React.Component {
           weekdates: days.yearWeekday,
         });
         this.filterDates();
+        this.pagination();
       });
+  }
+
+  setPage(event) {
+    let val = parseInt(event.target.innerText)
+    this.setState({
+      page: val,
+    })
+  }
+
+  pagination() {
+    const pages = [1];
+    let count = 0;
+    for (let i = 0; i < this.state.data.length; i += 1) {
+      if (count === 5) {
+        pages.push(pages[pages.length - 1] + 1);
+        count = 0;
+      }
+      count += 1;
+    }
+    this.setState({
+      pages,
+    });
   }
 
   selectDate(event) {
@@ -155,13 +179,24 @@ class Calendar extends React.Component {
     if (this.state.data.length === 0) {
       theatres = <div className="theatre-times"><p>There is no data here.</p></div>;
     } else {
-      theatres = <div className="theatre-times">{this.state.data.map(data => <div className="theatre-field"><Theater theater={data.theater} address={data.Address} times={data.times} /></div>)}</div>;
+      const mapArr = [];
+      const index = (this.state.page - 1) * 5;
+      for (let i = index; i < index + 5; i += 1) {
+        if (i === this.state.data.length) {
+          break;
+        }
+        mapArr.push(this.state.data[i]);
+      }
+      theatres = <div className="theatre-times">{mapArr.map(data => <div className="theatre-field"><Theater theater={data.theater} address={data.Address} times={data.times} /></div>)}</div>;
     }
+
+    const page = <div className="theatre-times"><div className="theatre-spot">{this.state.pages.map(pag => <span className="page-button" onClick={this.setPage.bind(this)}>{pag}</span>)}</div></div>;
 
     return (
       <div>
         {scroll}
         {theatres}
+        {page}
       </div>
     );
   }
