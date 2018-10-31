@@ -7,6 +7,8 @@ import App from '../client/src/App.jsx';
 import Calendar from '../client/src/Calendar.jsx';
 import getDays from '../daysinamonth.js';
 import Dates from '../client/src/Dates.jsx';
+import Theater from '../client/src/Theater.jsx';
+import TheaterTime from '../client/src/TheaterTime.jsx';
 
 test('getDays function should have 365 dates', () => {
   const days = new getDays();
@@ -100,3 +102,34 @@ test('clicking on date should change selected date', () => {
   wrapper.find('ul .month-highlight').at(1).simulate('click');
   expect(wrapper.state('selected')).toBe('2018-10-25');
 });
+
+test('pagination should update pages array', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6] 
+  });
+  const instance = wrapper.instance();
+  instance.pagination();
+  expect(wrapper.state('pages').length).toBe(2);
+});
+
+test('Theater component should render a theater', () => {
+  const wrapper = shallow(<Theater />);
+  wrapper.setProps({ theater: 'Patreon', address: '14 Truncheon Drive', times: ['5:30pm', '10:30pm', '2:30pm'] });
+  const wrap = wrapper.find('.theatre-header');
+  expect(wrap.text()).toContain('Patreon');
+});
+
+test('Theater component should render an address', () => {
+  const wrapper = shallow(<Theater />);
+  wrapper.setProps({ theater: 'Patreon', address: '14 Truncheon Drive', times: ['5:30pm', '10:30pm', '2:30pm'] });
+  const wrap = wrapper.find('.theatre-header');
+  expect(wrap.text()).toContain('14 Truncheon Drive');
+});
+
+test('Theater component should render 3 theatre time components', () => {
+  const wrapper = mount(<Theater />);
+  wrapper.setProps({ theater: 'Patreon', address: '14 Truncheon Drive', times: ['5:30pm', '10:30pm', '2:30pm'] });
+  expect(wrapper.find(TheaterTime).length).toBe(3);
+})

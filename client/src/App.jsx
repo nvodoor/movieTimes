@@ -1,6 +1,6 @@
 import React from 'react';
 import Calendar from './Calendar.jsx';
-import '../../public/styles.css';
+import './styles.css';
 
 const App = () => (
   <div>
