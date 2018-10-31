@@ -2,6 +2,7 @@ import React from 'react';
 import Days from '../../daysinamonth.js';
 import Dates from './Dates.jsx';
 import Theater from './Theater.jsx';
+import '../../public/styles.css';
 
 class Calendar extends React.Component {
   constructor(props) {

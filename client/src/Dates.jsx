@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../public/styles.css';
+
 
 const Dates = ({
   dayweek, month, day, ident, clicker, specClass,
