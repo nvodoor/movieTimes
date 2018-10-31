@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TheaterTime from './TheaterTime.jsx';
-import '../../public/styles.css';
+import './styles.css';
 
 
 const Theater = ({ theater, address, times }) => (
