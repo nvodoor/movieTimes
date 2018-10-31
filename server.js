@@ -30,7 +30,7 @@ app.get('/api/movies/:movie/:date/:location', (req, res) => {
     const long = coords[1]
 
     for (var i = 0; i < result.length; i++) {
-      if (Math.abs(lat-result[i].latitude) < 50 && Math.abs(long-result[i].longitude) < 50) {
+      if (Math.abs(lat-result[i].latitude) < 75 && Math.abs(long-result[i].longitude) < 75) {
         newResult.push(result[i]);
       }
     }
@@ -51,7 +51,7 @@ app.get('/api/moviesbyid/:movieid/:date/:location', (req, res) => {
     const long = coords[1];
 
     for (var i = 0; i < result.length; i++) {
-      if (Math.abs(lat - result[i].latitude) < 50 && Math.abs(long - result[i].longitude) < 50) {
+      if (Math.abs(lat - result[i].latitude) < 75 && Math.abs(long - result[i].longitude) < 75) {
         newResult.push(result[i]);
       }
     }

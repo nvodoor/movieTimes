@@ -42,7 +42,8 @@ test('Calendar Component should have working backDate method', () => {
   wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
   instance.backDate();
   expect(wrapper.state('date')).toBe('2018-10-23');
-})
+});
+
 
 test('Calendar Component should have working forwardDate method', () => {
   const wrapper = mount(<Calendar />);
@@ -52,7 +53,25 @@ test('Calendar Component should have working forwardDate method', () => {
   wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
   instance.forwardDate();
   expect(wrapper.state('date')).toBe('2018-10-25');
-})
+});
+
+test('Click on back arrow should fire backDate method', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
+  wrapper.find('.fa-arrow-left').simulate('click');
+  expect(wrapper.state('date')).toBe('2018-10-23');
+});
+
+test('Click on forward arrow should fire backDate method', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
+  wrapper.find('.fa-arrow-right').simulate('click');
+  expect(wrapper.state('date')).toBe('2018-10-25');
+});
 
 test('Dates Component should have 7 dates within Calendar Component', () => {
   const wrapper = mount(<Calendar />);
@@ -68,4 +87,16 @@ test('Dates Component should have 7 dates within Calendar Component', () => {
 test('Dates Component should contain three li items', () => {
   const wrapper = shallow(<Dates />);
   expect(wrapper.find('li').length).toBe(3);
+});
+
+test('clicking on date should change selected date', () => {
+  const wrapper = mount(<Calendar />);
+  const days = new getDays();
+  days.fillDays(2018);
+  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes });
+  const instance = wrapper.instance();
+  instance.filterDates();
+  wrapper.update();
+  wrapper.find('ul .month-highlight').at(1).simulate('click');
+  expect(wrapper.state('selected')).toBe('2018-10-25');
 });
