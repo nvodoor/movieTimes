@@ -96,6 +96,24 @@ class Calendar extends React.Component {
     this.filterDates(day);
   }
 
+  backDate() {
+    const index = this.state.dateIndex[this.state.date] - 1;
+    const day = this.state.dates[index];
+    this.setState({
+      date: day,
+    })
+    this.filterDates(day);
+  }
+
+  forwardDate() {
+    const index = this.state.dateIndex[this.state.date] + 1;
+    const day = this.state.dates[index];
+    this.setState({
+      date: day,
+    })
+    this.filterDates(day);
+  }
+
   render() {
     const scroll = (
       <div className="weekdates">
@@ -126,7 +144,9 @@ class Calendar extends React.Component {
             );
           },
         )}
+
         <div className="arrows" onClick={this.forwardDate.bind(this)}><i id="back" className="fas fa-arrow-right" /></div>
+
       </div>
     );
 
