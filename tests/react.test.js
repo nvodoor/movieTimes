@@ -44,6 +44,7 @@ test('Calendar Component should have working backDate method', () => {
   expect(wrapper.state('date')).toBe('2018-10-23');
 });
 
+
 test('Calendar Component should have working forwardDate method', () => {
   const wrapper = mount(<Calendar />);
   const days = new getDays();
