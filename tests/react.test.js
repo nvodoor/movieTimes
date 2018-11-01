@@ -148,3 +148,11 @@ test('Theater component should render 3 theatre time components', () => {
   wrapper.setProps({ theater: 'Patreon', address: '14 Truncheon Drive', times: ['5:30pm', '10:30pm', '2:30pm'] });
   expect(wrapper.find(TheaterTime).length).toBe(3);
 })
+
+test('Theater component should change display on click', () => {
+  const wrapper = mount(<Theater />);
+  wrapper.setProps({ theater: 'Patreon', address: '14 Truncheon Drive', times: ['5:30pm', '10:30pm', '2:30pm'] });
+  const mockEvent = { target: { className: 'fas fa-print' } };
+  wrapper.find('.fa-print').simulate('click', mockEvent);
+  expect(wrapper.state('displayPrintHead').display).toBe('flex');
+});
