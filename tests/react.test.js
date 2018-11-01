@@ -108,7 +108,7 @@ test('pagination should update pages array', () => {
   const days = new getDays();
   days.fillDays(2018);
   wrapper.setState({
-    date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6],
+    date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6], 
   });
   const instance = wrapper.instance();
   instance.pagination();
@@ -129,6 +129,7 @@ test('setPage should update page', () => {
   wrapper.find('.page-button').at(1).simulate('click', mockedEvent);
   expect(wrapper.state('page')).toBe(2);
 });
+
 
 test('Theater component should render a theater', () => {
   const wrapper = shallow(<Theater />);
