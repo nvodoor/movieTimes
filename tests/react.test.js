@@ -107,7 +107,8 @@ test('pagination should update pages array', () => {
   const wrapper = mount(<Calendar />);
   const days = new getDays();
   days.fillDays(2018);
-  wrapper.setState({ date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6] 
+  wrapper.setState({
+    date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6],
   });
   const instance = wrapper.instance();
   instance.pagination();
@@ -119,7 +120,7 @@ test('setPage should update page', () => {
   const days = new getDays();
   days.fillDays(2018);
   wrapper.setState({
-    date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6]
+    date: '2018-10-24', dates: days.yearDates, dateIndex: days.yearIndexes, data: [1, 2, 3, 4, 5, 6],
   });
   const instance = wrapper.instance();
   instance.pagination();
@@ -127,7 +128,7 @@ test('setPage should update page', () => {
   const mockedEvent = { target: { innerText: '2' } };
   wrapper.find('.page-button').at(1).simulate('click', mockedEvent);
   expect(wrapper.state('page')).toBe(2);
-})
+});
 
 test('Theater component should render a theater', () => {
   const wrapper = shallow(<Theater />);
@@ -147,7 +148,7 @@ test('Theater component should render 3 theatre time components', () => {
   const wrapper = mount(<Theater />);
   wrapper.setProps({ theater: 'Patreon', address: '14 Truncheon Drive', times: ['5:30pm', '10:30pm', '2:30pm'] });
   expect(wrapper.find(TheaterTime).length).toBe(3);
-})
+});
 
 test('Theater component should change display on click', () => {
   const wrapper = mount(<Theater />);

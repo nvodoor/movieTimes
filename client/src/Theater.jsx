@@ -67,7 +67,7 @@ class Theater extends React.Component {
           },
           displayPrintHead: {
             display: 'none',
-          }
+          },
         });
       }
     }

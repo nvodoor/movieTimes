@@ -23,7 +23,8 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(this.state.selected);
+    const { selected } = this.state;
+    this.getData(selected);
   }
 
   getData(day) {
@@ -56,16 +57,18 @@ class Calendar extends React.Component {
   }
 
   setPage(event) {
-    let val = parseInt(event.target.innerText)
+    // eslint-disable-next-line radix
+    const val = parseInt(event.target.innerText);
     this.setState({
       page: val,
-    })
+    });
   }
 
   pagination() {
     const pages = [1];
     let count = 0;
-    for (let i = 0; i < this.state.data.length; i += 1) {
+    const { data } = this.state;
+    for (let i = 0; i < data.length; i += 1) {
       if (count === 5) {
         pages.push(pages[pages.length - 1] + 1);
         count = 0;
@@ -87,26 +90,28 @@ class Calendar extends React.Component {
 
   filterDates(day = this.state.date) {
     const filterDate = [];
-    const index = this.state.dateIndex[day];
+    const { dateIndex, weekdates, dates } = this.state;
+    const index = dateIndex[day];
     const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     for (let i = index; i < index + 7; i += 1) {
       const obj = {};
-      const inDate = this.state.dates[i].split('-');
+      const inDate = dates[i].split('-');
       obj.day = inDate[2];
-      obj.weekday = this.state.weekdates[i];
+      obj.weekday = weekdates[i];
+      // eslint-disable-next-line radix
       obj.month = months[parseInt(inDate[1]) - 1];
-      obj.date = this.state.dates[i];
+      obj.date = dates[i];
       filterDate.push(obj);
     }
     this.setState({
       filterDates: filterDate,
     });
-
   }
 
   backDate() {
-    const index = this.state.dateIndex[this.state.date] - 1;
-    const day = this.state.dates[index];
+    const { dateIndex, date, dates } = this.state;
+    const index = dateIndex[date] - 1;
+    const day = dates[index];
     this.setState({
       date: day,
     });
@@ -114,8 +119,9 @@ class Calendar extends React.Component {
   }
 
   forwardDate() {
-    const index = this.state.dateIndex[this.state.date] + 1;
-    const day = this.state.dates[index];
+    const { dateIndex, date, dates } = this.state;
+    const index = dateIndex[date] + 1;
+    const day = dates[index];
     this.setState({
       date: day,
     });
@@ -123,12 +129,15 @@ class Calendar extends React.Component {
   }
 
   render() {
+    const {
+      filterDates, selected, data, page, pages,
+    } = this.state;
     const scroll = (
       <div className="weekdates">
         <div className="arrows" onClick={this.backDate.bind(this)}><i className="fas fa-arrow-left" /></div>
-        {this.state.filterDates.map(
+        {filterDates.map(
           (date) => {
-            if (date.date !== this.state.selected) {
+            if (date.date !== selected) {
               return (
                 <Dates
                   dayweek={date.weekday}
@@ -160,27 +169,27 @@ class Calendar extends React.Component {
 
     let theatres;
 
-    if (this.state.data.length === 0) {
+    if (data.length === 0) {
       theatres = <div className="theatre-times"><p>There is no data here.</p></div>;
     } else {
       const mapArr = [];
-      const index = (this.state.page - 1) * 5;
+      const index = (page - 1) * 5;
       for (let i = index; i < index + 5; i += 1) {
-        if (i === this.state.data.length) {
+        if (i === data.length) {
           break;
         }
-        mapArr.push(this.state.data[i]);
+        mapArr.push(data[i]);
       }
-      theatres = <div className="theatre-times">{mapArr.map(data => <div className="theatre-field"><Theater theater={data.theater} address={data.Address} times={data.times} /></div>)}</div>;
+      theatres = <div className="theatre-times">{mapArr.map(theatre => <div className="theatre-field"><Theater theater={theatre.theater} address={theatre.Address} times={theatre.times} /></div>)}</div>;
     }
 
-    const page = <div className="theatre-times"><div className="theatre-spot">{this.state.pages.map(pag => <span className="page-button" onClick={this.setPage.bind(this)}>{pag}</span>)}</div></div>;
+    const pagination = <div className="theatre-times"><div className="theatre-spot">{pages.map(pag => <span className="page-button" onClick={this.setPage.bind(this)}>{pag}</span>)}</div></div>;
 
     return (
       <div>
         {scroll}
         {theatres}
-        {page}
+        {pagination}
       </div>
     );
   }
