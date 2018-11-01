@@ -17,7 +17,7 @@ class Calendar extends React.Component {
       weekdates: [],
       selected: '2018-10-24',
       pages: [],
-      page: 1
+      page: 1,
     };
     this.selectDate = this.selectDate.bind(this);
   }

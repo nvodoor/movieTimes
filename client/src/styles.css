@@ -77,6 +77,8 @@
 }
 
 .theatre-header-field {
+  display: flex;
+  justify-content: flex-start;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 10px;
 }
@@ -92,6 +94,10 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
+}
+
+.theatre-icon-end {
+  margin-left: auto;
 }
 
 .time-button {
@@ -110,4 +116,29 @@
   padding-right: 10px;
   background-color: #e1e5ed;
   margin-right: 20px;
+}
+
+.icon-padding {
+  margin-right: 10px;
+}
+
+/* .modal-hover {
+  display: none;
+  background-color: orange;
+  color: white;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+} */
+
+.modal-hover {
+  display: none;
+}
+
+/* .modal-hover:hover {
+  display: block;
+} */
+
+.time-button:hover {
+  border: 2px solid black;
 }
