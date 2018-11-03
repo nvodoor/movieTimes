@@ -102,6 +102,7 @@ class Calendar extends React.Component {
       // eslint-disable-next-line radix
       obj.month = months[parseInt(inDate[1]) - 1];
       obj.date = dates[i];
+      obj.index = i;
       filterDate.push(obj);
     }
     this.setState({
@@ -141,6 +142,7 @@ class Calendar extends React.Component {
             if (date.date !== selected) {
               return (
                 <Dates
+                  key={date.index}
                   dayweek={date.weekday}
                   day={date.day}
                   month={date.month}
@@ -152,6 +154,7 @@ class Calendar extends React.Component {
             }
             return (
               <Dates
+                key={date.index}
                 dayweek={date.weekday}
                 day={date.day}
                 month={date.month}
@@ -181,10 +184,10 @@ class Calendar extends React.Component {
         }
         mapArr.push(data[i]);
       }
-      theatres = <div className="theatre-times">{mapArr.map(theatre => <div className="theatre-field"><Theater theater={theatre.theater} address={theatre.Address} times={theatre.times} /></div>)}</div>;
+      theatres = <div className="theatre-times">{mapArr.map((ind, theatre) => <div className="theatre-field"><Theater key={ind} theater={theatre.theater} address={theatre.Address} times={theatre.times} /></div>)}</div>;
     }
 
-    const pagination = <div className="theatre-times"><div className="theatre-spot">{pages.map(pag => <span className="page-button" onClick={this.setPage.bind(this)}>{pag}</span>)}</div></div>;
+    const pagination = <div className="theatre-times"><div className="theatre-spot">{pages.map((pagind, pag) => <span className="page-button" onClick={this.setPage.bind(this)} key={pagind}>{pag}</span>)}</div></div>;
 
     return (
       <div>
