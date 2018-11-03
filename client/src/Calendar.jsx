@@ -57,6 +57,7 @@ class Calendar extends React.Component {
   }
 
   setPage(event) {
+
     // eslint-disable-next-line radix
     const val = parseInt(event.target.innerText);
     this.setState({
