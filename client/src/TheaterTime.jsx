@@ -9,7 +9,7 @@ const TheaterTime = ({ time }) => (
 );
 
 TheaterTime.propTypes = {
-  time: PropTypes.string,
+  time: PropTypes.number,
 };
 
 TheaterTime.defaultProps = {

@@ -9,14 +9,14 @@ const app = express();
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'MovieTimes'
-})
+  database: 'MovieTimes',
+});
 
 connection.connect();
 
-app.use(parser.json())
-app.use(express.static(path.join(__dirname+'/public')))
-app.use(morgan("default"))
+app.use(parser.json());
+app.use(express.static(path.join(__dirname+'/public')));
+app.use(morgan("default"));
 
 app.get('/api/movies/:movie/:date/:location', (req, res) => {
   let querystring = 'SELECT * FROM MovieTimes WHERE movie = (?) AND date = (?)';
@@ -61,7 +61,7 @@ app.get('/api/moviesbyid/:movieid/:date/:location', (req, res) => {
 
 const port = '3002';
 
-let server = app.listen(port, console.log(`listening on port: ${port}`))
+let server = app.listen(port, console.log(`listening on port: ${port}`));
 
 // necessary function for tests to close server
 function stop(exec) {
