@@ -184,10 +184,10 @@ class Calendar extends React.Component {
         }
         mapArr.push(data[i]);
       }
-      theatres = <div className="theatre-times">{mapArr.map((ind, theatre) => <div className="theatre-field"><Theater key={ind} theater={theatre.theater} address={theatre.Address} times={theatre.times} /></div>)}</div>;
+      theatres = <div className="theatre-times">{mapArr.map((theatre) => <div className="theatre-field"><Theater key={theatre.ind} theater={theatre.theater} address={theatre.Address} times={theatre.times} /></div>)}</div>;
     }
 
-    const pagination = <div className="theatre-times"><div className="theatre-spot">{pages.map((pagind, pag) => <span className="page-button" onClick={this.setPage.bind(this)} key={pagind}>{pag}</span>)}</div></div>;
+    const pagination = <div className="theatre-times"><div className="theatre-spot">{pages.map((pag, pagind) => <span className="page-button" onClick={this.setPage.bind(this)} key={pagind}>{pag}</span>)}</div></div>;
 
     return (
       <div>
