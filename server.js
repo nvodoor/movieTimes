@@ -7,9 +7,10 @@ const parser = require('body-parser')
 const app = express();
 
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: '172.17.0.2',
   user: 'root',
   database: 'MovieTimes',
+  port: '3306'
 });
 
 connection.connect();

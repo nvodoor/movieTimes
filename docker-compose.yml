@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  movie-times:
+    build: .
+    depends_on:
+      - 'db'
+    ports:
+      - '3002:3002'
+
+  db:
+    build: database/
+    
