@@ -11,4 +11,5 @@ services:
 
   db:
     build: database/
-    
+    ports:
+      - '3306'

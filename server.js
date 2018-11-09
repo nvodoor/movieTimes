@@ -6,14 +6,14 @@ const parser = require('body-parser')
 
 const app = express();
 
-const connection = mysql.createConnection({
-  host: '172.17.0.2',
+const connection = mysql.createPool({
+  host: 'db',
   user: 'root',
   database: 'MovieTimes',
   port: '3306'
 });
 
-connection.connect();
+// connection.connect();
 
 app.use(parser.json());
 app.use(express.static(path.join(__dirname+'/public')));
