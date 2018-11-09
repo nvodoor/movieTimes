@@ -146,7 +146,7 @@ class Theater extends React.Component {
           <div className="theatre-header-field">{address}</div>
         </div>
         <p className="theatre-time-head">Theater Times: </p>
-        <div className="theatre-showtimes">{times.map((index, time) => <TheaterTime key={index} time={time} />)}</div>
+        <div className="theatre-showtimes">{times.map((time, index) => <TheaterTime key={index} time={time} />)}</div>
       </div>
     );
   }
