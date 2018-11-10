@@ -16,7 +16,7 @@
     "seed": "mysql -u root < schema.sql",
     "test": "jest --coverage",
     "watch": "webpack -w",
-    "server": "nodemon server.js"
+    "server": "node server.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
